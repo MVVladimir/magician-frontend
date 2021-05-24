@@ -40,7 +40,6 @@ const fetchedData = async (id) => {
 }
 
 export class Scene extends React.Component {
-
   constructor(props) {
     super(props);
     console.log('constructor');
@@ -73,25 +72,19 @@ export class Scene extends React.Component {
     console.log(response);
     const { data } = response;
     this.setState({ scene: data });
+    this.read();
   }
 
   getStateForAssistant () {
     console.log('getStateForAssistant: this.state:', this.state)
-    /*const state = {
+    const state = {
       item_selector: {
-        items: this.state.notes.map(
-          ({ id, title }, index) => ({
-            number: index + 1,
-            id,
-            title,
-          })
-        ),
-      },
+        items: { text : this.state.scene.text }
+      }
     };
 
     console.log('getStateForAssistant: state:', state)
-    return state;*/
-    return this.state;
+    return state;
   }
 
   dispatchAssistantAction (action) {
@@ -102,10 +95,11 @@ export class Scene extends React.Component {
           console.log('add_note', action, 'action.choice = ', action.choice);
           return this.add_note(action);
 
-        /*
-        case 'done_note':
-          return this.done_note(action);
+        
+        case 'read':
+          return this.read();
 
+        /*
         case 'delete_note':
           return this.delete_note(action);
 
@@ -116,19 +110,24 @@ export class Scene extends React.Component {
     }
   }
 
+  read () {
+    this.assistant.sendData( { action : { action_id : 'read' } } );
+  }
+
   add_note (action) {
     let choice = action.choice;
+    console.log(choice);
 
-    if (choice == 'один' || choice == 'первый' || choice == 'первое') {
+    if (choice == 'один' || choice == 'первый' || choice == 'первое' || choice == 'первую') {
       choice = 1;
     }
-    if (action.choice == 'два' || choice == 'второй'|| choice == 'второе') {
+    if (action.choice == 'два' || choice == 'второй'|| choice == 'второе' || choice == 'вторую') {
       choice = 2;
     }
-    if (action.choice == 'три' || choice == 'третий'|| choice == 'третье') {
+    if (action.choice == 'три' || choice == 'третий'|| choice == 'третье' || choice == 'третью') {
       choice = 3;
     }
-    if (action.choice == 'четыре' || choice == 'четвертый'|| choice == 'четвертое') {
+    if (action.choice == 'четыре' || choice == 'четвертый'|| choice == 'четвертое' || choice == 'четвертую') {
       choice = 4;
     }
 
@@ -197,6 +196,7 @@ export class Scene extends React.Component {
         const { data } = response;
         //setScene(data);
         this.setState({ scene: data });
+        this.read();
       })
     counter++;
     if (counter > 2) {
@@ -246,7 +246,7 @@ export class Scene extends React.Component {
                     scene.options.map((item) => {
                       return (
                         <Row>
-                          <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.moveTo(item.id) }>
+                          <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text}) }>
                             {item.text}
                           </Button>
                         </Row>
@@ -271,9 +271,7 @@ export class Scene extends React.Component {
     } else {
       return <h1>Nothing...</h1>
     }
-
   }
-
 }
 
 export default Scene;
