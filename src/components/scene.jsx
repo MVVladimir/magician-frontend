@@ -10,14 +10,24 @@ import {
 import { darkSber } from '@sberdevices/plasma-tokens/themes';
 import { Button } from '@sberdevices/ui/components/Button/Button';
 import { Container, Row, Col } from '@sberdevices/plasma-ui/components/Grid';
-import { Image } from '@sberdevices/ui/components/Image/Image'
+import { Image } from '@sberdevices/ui/components/Image/Image';
 
+import Indicators from './indicators'
 import './scene.css';
 
-let currentId = 1;
+const YOUDIED = 99999;
+
+let lives = 3;
+let glory = 50;
+let light = 50;
+let darkness = 50;
 
 let counter = 0;
+let currentId = 0;
 let pictures = [];
+
+let randEvents = [100];
+let curEvents = [100];
 
 const setBackground = {
   backgroundImage: ''
@@ -48,8 +58,6 @@ export class Scene extends React.Component {
 
     this.state = {
       notes: [],
-    //}
-    //this.state = {
       scene:           null,
       backgroundImage: { background: '' }
     };
@@ -155,24 +163,6 @@ export class Scene extends React.Component {
     })
   }*/
 
-  done_note (action) {
-    console.log('done_note', action);
-    this.setState({
-      notes: this.state.notes.map((note) =>
-        (note.id === action.id)
-        ? { ...note, completed: !note.completed }
-        : note
-      ),
-    })
-  }
-
-  delete_note (action) {
-    console.log('delete_note', action);
-    this.setState({
-      notes: this.state.notes.filter(({ id }) => id !== action.id),
-    })
-  }
-
   setBackgrounds (curImg) {
     pictures.push(curImg);
     //debugger;
@@ -191,52 +181,105 @@ export class Scene extends React.Component {
   
   moveTo(nextId) {
     //fetchedData(nextId)
+    if ((lives == 0 || light == 0 || darkness == 0 || glory == 0) && this.state.scene.id != YOUDIED ) {
+      nextId = YOUDIED;
+    }
+
+    console.log('NEXT IS ', nextId);
+
+    if (!nextId) {
+      nextId = Math.floor(Math.random() * curEvents.length);
+      nextId = curEvents[nextId];
+    }
+
+    if ((nextId == 0 || nextId == 1) && this.state.scene.id > 1) {
+      setBackground.backgroundImage = '';
+      curEvents = randEvents;
+      counter = 1;
+      lives = 3;
+      glory = 50;
+      light = 50;
+      darkness = 50;
+    }
+
     getScene(nextId)
       .then((response) => {
         const { data } = response;
         //setScene(data);
         this.setState({ scene: data });
         this.read();
-      })
-    counter++;
-    if (counter > 2) {
-      this.setBackgrounds(this.state.scene.img);
-    }
+        counter++;
+
+        if (counter > 0 && data.img) {
+          this.setBackgrounds(data.img);
+        }
+
+        console.log('data', data);
+
+        if (data.bonus) {
+          lives += data.bonus.lives;
+          light += data.bonus.light;
+          darkness += data.bonus.darkness;
+          glory += data.bonus.glory;
+        }
+      });
   }
 
   render() {
 
-    //const [scene, setScene] = useState(null);
-    //const [scene, setScene] = useState(null);
+    /*
+    const [scene, setScene] = useState(null);
+    const [scene, setScene] = useState(null);
 
-    //const [backgroundImage, setBackgroundImage] = useState({background : ''});
+    const [backgroundImage, setBackgroundImage] = useState({background : ''});
 
-    //const fetchedData = async (id) => {
-    //    return await getScene(id);
-    //}
-    //
-    //useEffect(() => {
-    //    fetchedData(currentId).then((response) => {
-    //        console.log(response);
-    //        const { data } = response;
-    //        setScene(data);
-    //    })
-    //}, []);
+    const fetchedData = async (id) => {
+       return await getScene(id);
+    }
+    
+    useEffect(() => {
+       fetchedData(currentId).then((response) => {
+           console.log(response);
+           const { data } = response;
+           setScene(data);
+       })
+    }, []);
+    */
 
      const { scene, backgroundImage } = this.state;
 
     /*изначально было setBackgroundImage({background : `url(${API_URL}/${curImg}.png) center no-repeat`});*/
 
-
-
     if (scene) {
       if (scene.options) {
+
+        if (counter == 0) {
+          return (
+            <Container styles={darkSber} >
+              <h1> { scene.text } </h1>
+              {
+                scene.options.map((item) => {
+                  return (
+                    <Row>
+                      <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text}) }>
+                        {item.text}
+                      </Button>
+                    </Row>
+                  );
+                })
+              }
+            </Container>
+          );
+        }
+
         return(
           <Container styles={darkSber} >
 
               <Row>
                 <Col  type="calc" size={3}>
-                  <div style={backgroundImage} className = 'img-Wrapper'> <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> </div>
+                  <div style={backgroundImage} height={'450'} width={'450'} className = 'img-Wrapper'>
+                     {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
+                  </div>
                 </Col>
                  
                 
@@ -255,19 +298,15 @@ export class Scene extends React.Component {
                     })
                   }
                 </Col>
-
             </Row>
+
+            { console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
+
+            <Indicators lives={lives} light={light} darkness={darkness} glory={glory} />
+
           </Container>
         );
-      } else {
-        return(
-          <Container styles={darkSber} >
-            <img src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} />
-            <h1> { scene.text } </h1>
-          </Container>
-        )
       }
-
     } else {
       return <h1>Nothing...</h1>
     }
