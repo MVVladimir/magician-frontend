@@ -11,6 +11,8 @@ import { darkSber } from '@sberdevices/plasma-tokens/themes';
 import { Button } from '@sberdevices/ui/components/Button/Button';
 import { Container, Row, Col } from '@sberdevices/plasma-ui/components/Grid';
 import { Image } from '@sberdevices/ui/components/Image/Image';
+import { Spinner } from '@sberdevices/plasma-ui/components/Spinner'
+import { Headline1 } from '@sberdevices/plasma-ui';
 
 import Indicators from './indicators'
 import './scene.css';
@@ -255,8 +257,9 @@ export class Scene extends React.Component {
 
         if (counter == 0) {
           return (
-            <Container styles={darkSber} >
-              <h1> { scene.text } </h1>
+            < >
+              <Col type="calc" offsetS={1} offsetM={2} offsetL={3} offsetXL={4} sizeS={1} sizeM={2} sizeL={3} sizeXL={4} />
+              <Headline1> { scene.text } </Headline1>
               {
                 scene.options.map((item) => {
                   return (
@@ -268,23 +271,22 @@ export class Scene extends React.Component {
                   );
                 })
               }
-            </Container>
+            </>
           );
         }
 
         return(
-          <Container styles={darkSber} >
-
+          // <Container styles={darkSber} >
               <Row>
-                <Col  type="calc" size={3}>
-                  <div style={backgroundImage} height={'450'} width={'450'} className = 'img-Wrapper'>
+                <Col>
+                  <div style={backgroundImage} className = 'img-Wrapper'>
                      {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                   </div>
-                </Col>
                  
-                
-                <Col  type="calc" offset={2} size={5}>
-                  <h1> { scene.text   } </h1>
+                <Indicators lives={lives} light={light} darkness={darkness} glory={glory} />
+                </Col>
+                  <Col type="calc" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
+                  <Headline1> { scene.text   } </Headline1>
                   {
                     scene.options.map((item) => {
                       return (
@@ -293,22 +295,17 @@ export class Scene extends React.Component {
                             {item.text}
                           </Button>
                         </Row>
-                      
                       );
                     })
                   }
-                </Col>
-            </Row>
-
-            { console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
-
-            <Indicators lives={lives} light={light} darkness={darkness} glory={glory} />
-
-          </Container>
+                  </Col>
+          </Row>
+            //{ console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
+          // </Container>
         );
       }
     } else {
-      return <h1>Nothing...</h1>
+      return () => <Spinner />
     }
   }
 }
