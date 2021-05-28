@@ -112,7 +112,6 @@ export class Scene extends React.Component {
         /*
         case 'delete_note':
           return this.delete_note(action);
-
         default:
           throw new Error();
         */
