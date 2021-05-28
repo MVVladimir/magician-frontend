@@ -16,6 +16,7 @@ import { Headline1 } from '@sberdevices/plasma-ui';
 
 import Indicators from './indicators'
 import './scene.css';
+import { createMethodSignature } from 'typescript';
 
 const YOUDIED = 99999;
 
@@ -84,7 +85,7 @@ export class Scene extends React.Component {
     if (data.nodesArr) {
       nodesArr = data.nodesArr;
       console.log('nodesArr', nodesArr);
-      curNodes = nodesArr;
+      curNodes = nodesArr.slice();
     }
 
     this.setState({ scene: data });
@@ -131,6 +132,9 @@ export class Scene extends React.Component {
 
   add_note (action) {
     let choice = action.choice;
+
+    choice = choice.toLowerCase();
+    
     console.log(choice);
 
     if (choice == 'один' || choice == 'первый' || choice == 'первое' || choice == 'первую') {
@@ -147,7 +151,7 @@ export class Scene extends React.Component {
     }
 
     this.state.scene.options.forEach((item, index) => {
-      if ((item.text.toLowerCase() === choice.toLowerCase()) || (index + 1 === choice)) {
+      if ((item.text.toLowerCase() === choice) || (index + 1 === choice)) {
         this.moveTo(item.id);
       }
     })
@@ -186,16 +190,25 @@ export class Scene extends React.Component {
   
   moveTo(nextId) {
     //fetchedData(nextId)
+
     if ((lives == 0 || mana == 0 || glory == 0) && this.state.scene.id != YOUDIED ) {
       nextId = YOUDIED;
     }
 
     console.log('NEXT IS ', nextId);
+    console.log('ARRAY = ', curNodes);
 
     if (!nextId) {
+
+      if (curNodes.length == 0) {
+        console.log('NODES ARR = ', nodesArr);
+        curNodes = nodesArr.slice();
+      }
+
       nextId = Math.floor(Math.random() * curNodes.length);
+      let tmp = nextId;
       nextId = curNodes[nextId];
-      curNodes.splice(nextId, 1);
+      curNodes.splice(tmp, 1);
       console.log(curNodes);
     }
 
