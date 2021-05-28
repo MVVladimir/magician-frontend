@@ -20,16 +20,15 @@ import './scene.css';
 const YOUDIED = 99999;
 
 let lives = 3;
+let mana = 50;
 let glory = 50;
-let light = 50;
-let darkness = 50;
 
 let counter = 0;
 let currentId = 0;
 let pictures = [];
 
-let randEvents = [100];
-let curEvents = [100];
+let nodesArr;
+let curNodes;
 
 const setBackground = {
   backgroundImage: ''
@@ -81,6 +80,13 @@ export class Scene extends React.Component {
     const response = await getScene(currentId);
     console.log(response);
     const { data } = response;
+
+    if (data.nodesArr) {
+      nodesArr = data.nodesArr;
+      console.log('nodesArr', nodesArr);
+      curNodes = nodesArr;
+    }
+
     this.setState({ scene: data });
     this.read();
   }
@@ -141,9 +147,7 @@ export class Scene extends React.Component {
     }
 
     this.state.scene.options.forEach((item, index) => {
-      console.log('index = ', index, 'choice = ', choice);
-      if ((item.text === choice) || (index + 1 === choice)) {
-        console.log('movedTo', item.id);
+      if ((item.text.toLowerCase() === choice.toLowerCase()) || (index + 1 === choice)) {
         this.moveTo(item.id);
       }
     })
@@ -182,25 +186,26 @@ export class Scene extends React.Component {
   
   moveTo(nextId) {
     //fetchedData(nextId)
-    if ((lives == 0 || light == 0 || darkness == 0 || glory == 0) && this.state.scene.id != YOUDIED ) {
+    if ((lives == 0 || mana == 0 || glory == 0) && this.state.scene.id != YOUDIED ) {
       nextId = YOUDIED;
     }
 
     console.log('NEXT IS ', nextId);
 
     if (!nextId) {
-      nextId = Math.floor(Math.random() * curEvents.length);
-      nextId = curEvents[nextId];
+      nextId = Math.floor(Math.random() * curNodes.length);
+      nextId = curNodes[nextId];
+      curNodes.splice(nextId, 1);
+      console.log(curNodes);
     }
 
     if ((nextId == 0 || nextId == 1) && this.state.scene.id > 1) {
       setBackground.backgroundImage = '';
-      curEvents = randEvents;
-      counter = 1;
+      curNodes = nodesArr;
+      counter = 0;
       lives = 3;
-      glory = 50;
-      light = 50;
-      darkness = 50;
+      mana = 50;
+      glory = 50; 
     }
 
     getScene(nextId)
@@ -210,17 +215,15 @@ export class Scene extends React.Component {
         this.setState({ scene: data });
         this.read();
         counter++;
+        console.log('COUNTER = ', counter);
 
         if (counter > 0 && data.img) {
           this.setBackgrounds(data.img);
-        }
-
-        console.log('data', data);
+        } 
 
         if (data.bonus) {
           lives += data.bonus.lives;
-          light += data.bonus.light;
-          darkness += data.bonus.darkness;
+          mana += data.bonus.mana;
           glory += data.bonus.glory;
         }
       });
@@ -274,6 +277,36 @@ export class Scene extends React.Component {
           );
         }
 
+        if (counter < 7) {
+          return(
+            // <Container styles={darkSber} >
+                <Row>
+                  <Col>
+                    <div style={backgroundImage} className = 'img-Wrapper'>
+                       {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
+                    </div>
+                   
+                  </Col>
+                    <Col type="calc" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
+                    <Headline1> { scene.text   } </Headline1>
+                    {
+                      scene.options.map((item) => {
+                        return (
+                          <Row>
+                            <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text}) }>
+                              {item.text}
+                            </Button>
+                          </Row>
+                        );
+                      })
+                    }
+                    </Col>
+            </Row>
+              //{ console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
+            // </Container>
+          );
+        }
+
         return(
           // <Container styles={darkSber} >
               <Row>
@@ -282,7 +315,6 @@ export class Scene extends React.Component {
                      {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                   </div>
                  
-                <Indicators lives={lives} light={light} darkness={darkness} glory={glory} />
                 </Col>
                   <Col type="calc" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
                   <Headline1> { scene.text   } </Headline1>
@@ -297,6 +329,7 @@ export class Scene extends React.Component {
                       );
                     })
                   }
+                  <Indicators lives={lives} mana={mana} glory={glory} />
                   </Col>
           </Row>
             //{ console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
@@ -304,7 +337,7 @@ export class Scene extends React.Component {
         );
       }
     } else {
-      return () => <Spinner />
+      return (<Spinner />);
     }
   }
 }

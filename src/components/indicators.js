@@ -13,8 +13,7 @@ class Indicators extends React.Component {
         return (
             <Row>
                 <Toast text={`Количество жизней: ${this.props.lives}💖`} />
-                <Toast text={`Мана света: ${this.props.light}☀`} />
-                <Toast text={`Мана тьмы: ${this.props.darkness}💀`} />
+                <Toast text={`Мана: ${this.props.mana}🧙`} />
                 <Toast text={`Слава: ${this.props.glory}🎺`} />
             </Row>
         );
