@@ -96,7 +96,12 @@ export class Scene extends React.Component {
     console.log('getStateForAssistant: this.state:', this.state)
     const state = {
       item_selector: {
-        items: { text : this.state.scene.text }
+        items: { 
+          text : this.state.scene.text, 
+          texts : this.state.scene.texts,
+          texta : this.state.scene.texta,
+          textj : this.state.scene.textj
+         }
       }
     };
 
@@ -225,6 +230,12 @@ export class Scene extends React.Component {
       .then((response) => {
         const { data } = response;
         //setScene(data);
+        if (data.bonus) {
+          lives += data.bonus.lives;
+          mana += data.bonus.mana;
+          glory += data.bonus.glory;
+        }
+
         this.setState({ scene: data });
         this.read();
         counter++;
@@ -233,12 +244,6 @@ export class Scene extends React.Component {
         if (counter > 0 && data.img) {
           this.setBackgrounds(data.img);
         } 
-
-        if (data.bonus) {
-          lives += data.bonus.lives;
-          mana += data.bonus.mana;
-          glory += data.bonus.glory;
-        }
       });
   }
 
@@ -331,6 +336,7 @@ export class Scene extends React.Component {
                 </Col>
                   <Col type="calc" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
                   <Headline1> { scene.text   } </Headline1>
+                  <Indicators lives={lives} mana={mana} glory={glory} />
                   {
                     scene.options.map((item) => {
                       return (
@@ -342,7 +348,6 @@ export class Scene extends React.Component {
                       );
                     })
                   }
-                  <Indicators lives={lives} mana={mana} glory={glory} />
                   </Col>
           </Row>
             //{ console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }

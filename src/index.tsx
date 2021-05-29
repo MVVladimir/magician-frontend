@@ -12,7 +12,7 @@ ReactDOM.render(
     <DeviceThemeProvider>
       <GlobalStyle />
       <App />
-    </DeviceThemeProvider>,
+    </DeviceThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
