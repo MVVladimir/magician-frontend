@@ -19,6 +19,7 @@ import './scene.css';
 import { createMethodSignature } from 'typescript';
 
 const YOUDIED = 99999;
+const YOUWIN = 100000;
 
 let lives = 3;
 let mana = 50;
@@ -100,7 +101,8 @@ export class Scene extends React.Component {
           text : this.state.scene.text, 
           texts : this.state.scene.texts,
           texta : this.state.scene.texta,
-          textj : this.state.scene.textj
+          textj : this.state.scene.textj,
+
          }
       }
     };
@@ -135,8 +137,13 @@ export class Scene extends React.Component {
     this.assistant.sendData( { action : { action_id : 'read' } } );
   }
 
+  sendException() {
+    this.assistant.sendData( { action : { action_id : 'noMatch' } } );
+  }
+
   add_note (action) {
     let choice = action.choice;
+    let isChanged = false;
 
     choice = choice.toLowerCase();
     
@@ -158,8 +165,13 @@ export class Scene extends React.Component {
     this.state.scene.options.forEach((item, index) => {
       if ((item.text.toLowerCase() === choice) || (index + 1 === choice)) {
         this.moveTo(item.id);
+        isChanged = true;
       }
     })
+
+    if (!isChanged) {
+      this.sendException();
+    }
     //return this.state;
   }
 
@@ -198,6 +210,10 @@ export class Scene extends React.Component {
 
     if ((lives == 0 || mana == 0 || glory == 0) && this.state.scene.id != YOUDIED ) {
       nextId = YOUDIED;
+    }
+
+    if ((lives > 0 && mana >= 200 && glory >= 200) && this.state.scene.id != YOUWIN ) {
+      nextId = YOUWIN;
     }
 
     console.log('NEXT IS ', nextId);
