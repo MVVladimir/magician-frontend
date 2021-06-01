@@ -4,6 +4,8 @@ import { Row } from '@sberdevices/plasma-ui/components/Grid';
 import { Toast } from '@sberdevices/plasma-ui';
 import { setConstantValue } from "typescript";
 
+import './centerIndicators.css'
+
 class Indicators extends React.Component {
     constructor(props) {
       super(props);
@@ -11,7 +13,7 @@ class Indicators extends React.Component {
 
     render() {
         return (
-            <Row>
+            <Row className = 'centerInd'>
                 <Toast text={`Количество жизней: ${this.props.lives}💖`} />
                 <Toast text={`Мана: ${this.props.mana}🧙`} />
                 <Toast text={`Слава: ${this.props.glory}🎺`} />
