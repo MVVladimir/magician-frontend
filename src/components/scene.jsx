@@ -76,14 +76,14 @@ export class Scene extends React.Component {
         case 'character':
           characterID = event.character.id;
           console.log("CHARACTER= ", characterID);
-        case 'action':
-          console.log(`assistant.on(data)`, event);
-          const { action } = event
-          this.dispatchAssistantAction(action);
+        // case 'action':
+        //   console.log(`assistant.on(data)`, event);
+        //   const { action } = event
+        //   this.dispatchAssistantAction(action);
       }
-      // console.log(`assistant.on(data)`, event);
-      // const { action } = event
-      // this.dispatchAssistantAction(action);
+      console.log(`assistant.on(data)`, event);
+      const { action } = event
+      this.dispatchAssistantAction(action);
     });
     this.assistant.on("start", (event) => {
       console.log(`assistant.on(start)`, event);
