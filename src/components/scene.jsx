@@ -19,6 +19,9 @@ import './scene.css';
 import './centerButtons.css'
 import './centerText.css'
 import './centerPic.css'
+import './sthg.css'
+import './startText.css'
+import './marginIndicators.css'
 import { createMethodSignature } from 'typescript';
 
 const YOUDIED = 99999;
@@ -108,7 +111,10 @@ export class Scene extends React.Component {
   }
 
   getStateForAssistant () {
-    console.log('getStateForAssistant: this.state:', this.state)
+    console.log('getStateForAssistant: this.state:', this.state);
+    
+    const rand =  Math.floor(Math.random() * this.state.scene.options.length);
+
     const state = {
       item_selector: {
         items: { 
@@ -116,7 +122,7 @@ export class Scene extends React.Component {
           texts : this.state.scene.texts,
           texta : this.state.scene.texta,
           textj : this.state.scene.textj,
-
+          userSuggest: this.state.scene.options[rand].text[0]
          }
       }
     };
@@ -176,11 +182,21 @@ export class Scene extends React.Component {
       choice = 4;
     }
 
-    this.state.scene.options.forEach((item, index) => {
-      if ((item.text.toLowerCase() === choice) || (index + 1 === choice)) {
-        this.moveTo(item.id);
+    this.state.scene.options.forEach((arr, index) => {
+
+      if (index + 1 === choice) {
+        this.moveTo(arr.id);
         isChanged = true;
       }
+
+      console.log('ARR = ' + arr.text);
+
+      arr.text.forEach((item) => {
+        if (item.toLowerCase() === choice) {
+          this.moveTo(arr.id);
+          isChanged = true;
+        }
+      })
     })
 
     if (!isChanged) {
@@ -322,13 +338,13 @@ export class Scene extends React.Component {
           return (
             < >
               <Col type="calc" offsetS={1} offsetM={2} offsetL={3} offsetXL={4} sizeS={1} sizeM={2} sizeL={3} sizeXL={4} />
-              <Headline1> { this.neededText(scene) } </Headline1>
+              <Headline1 className='textWrapper'> { this.neededText(scene) } </Headline1>
               {
                 scene.options.map((item) => {
                   return (
                     <Row>
-                      <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text}) }>
-                        {item.text}
+                      <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
+                        {item.text[0]}
                       </Button>
                     </Row>
                   );
@@ -341,21 +357,21 @@ export class Scene extends React.Component {
         if (counter < 7) {
           return(
             // <Container styles={darkSber} >
-                <Row>
-                  <Col className='centerPic'>
+                <Row className='rowWrapper'>
+                  <Col sizeS={4} sizeM={6} sizeL={8} sizeXL={6} className='centerPic'>
                     <div style={backgroundImage} className = 'img-Wrapper'>
                        {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                     </div>
                    
                   </Col>
-                  <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
+                  <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={8} sizeXL={6}>
                     <Headline1 className='centerText'> { this.neededText(scene) } </Headline1>
                     {
                       scene.options.map((item) => {
                         return (
-                          <Row type="rel" sizeS={4} sizeM={6} sizeL={6} sizeXL={6} >
-                            <Button  style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text}) }>
-                              {item.text}
+                          <Row>
+                            <Button  style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
+                              {item.text[0]}
                             </Button>
                           </Row>
                         );
@@ -370,8 +386,8 @@ export class Scene extends React.Component {
 
         return(
           // <Container styles={darkSber} >
-              <Row>
-                <Col className='centerPic'>
+              <Row className='rowWrapper'>
+                <Col sizeS={4} sizeM={6} sizeL={8} sizeXL={6} className='centerPic'>
                   <div style={backgroundImage} className = 'img-Wrapper'>
                      {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                   </div>
@@ -384,8 +400,8 @@ export class Scene extends React.Component {
                     scene.options.map((item) => {
                       return (
                         <Row type="rel" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
-                          <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text}) }>
-                            {item.text}
+                          <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
+                            {item.text[0]}
                           </Button>
                         </Row>
                       );

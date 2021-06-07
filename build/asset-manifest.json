@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/magician-frontend/static/css/main.dfb1e3d6.chunk.css",
-    "main.js": "/magician-frontend/static/js/main.219169b1.chunk.js",
-    "main.js.map": "/magician-frontend/static/js/main.219169b1.chunk.js.map",
-    "runtime-main.js": "/magician-frontend/static/js/runtime-main.ca446d38.js",
-    "runtime-main.js.map": "/magician-frontend/static/js/runtime-main.ca446d38.js.map",
+    "main.css": "/magician-frontend/static/css/main.c316804b.chunk.css",
+    "main.js": "/magician-frontend/static/js/main.bbfa9171.chunk.js",
+    "main.js.map": "/magician-frontend/static/js/main.bbfa9171.chunk.js.map",
+    "runtime-main.js": "/magician-frontend/static/js/runtime-main.c1b1592e.js",
+    "runtime-main.js.map": "/magician-frontend/static/js/runtime-main.c1b1592e.js.map",
     "static/css/2.ae15fd65.chunk.css": "/magician-frontend/static/css/2.ae15fd65.chunk.css",
-    "static/js/2.d968d59c.chunk.js": "/magician-frontend/static/js/2.d968d59c.chunk.js",
-    "static/js/2.d968d59c.chunk.js.map": "/magician-frontend/static/js/2.d968d59c.chunk.js.map",
-    "static/js/3.3cdd3a98.chunk.js": "/magician-frontend/static/js/3.3cdd3a98.chunk.js",
-    "static/js/3.3cdd3a98.chunk.js.map": "/magician-frontend/static/js/3.3cdd3a98.chunk.js.map",
+    "static/js/2.08184398.chunk.js": "/magician-frontend/static/js/2.08184398.chunk.js",
+    "static/js/2.08184398.chunk.js.map": "/magician-frontend/static/js/2.08184398.chunk.js.map",
+    "static/js/3.6450e73e.chunk.js": "/magician-frontend/static/js/3.6450e73e.chunk.js",
+    "static/js/3.6450e73e.chunk.js.map": "/magician-frontend/static/js/3.6450e73e.chunk.js.map",
     "index.html": "/magician-frontend/index.html",
     "static/css/2.ae15fd65.chunk.css.map": "/magician-frontend/static/css/2.ae15fd65.chunk.css.map",
-    "static/css/main.dfb1e3d6.chunk.css.map": "/magician-frontend/static/css/main.dfb1e3d6.chunk.css.map",
-    "static/js/2.d968d59c.chunk.js.LICENSE.txt": "/magician-frontend/static/js/2.d968d59c.chunk.js.LICENSE.txt",
+    "static/css/main.c316804b.chunk.css.map": "/magician-frontend/static/css/main.c316804b.chunk.css.map",
+    "static/js/2.08184398.chunk.js.LICENSE.txt": "/magician-frontend/static/js/2.08184398.chunk.js.LICENSE.txt",
     "static/media/sphere.ea0e1542.png": "/magician-frontend/static/media/sphere.ea0e1542.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.ca446d38.js",
+    "static/js/runtime-main.c1b1592e.js",
     "static/css/2.ae15fd65.chunk.css",
-    "static/js/2.d968d59c.chunk.js",
-    "static/css/main.dfb1e3d6.chunk.css",
-    "static/js/main.219169b1.chunk.js"
+    "static/js/2.08184398.chunk.js",
+    "static/css/main.c316804b.chunk.css",
+    "static/js/main.bbfa9171.chunk.js"
   ]
 }
