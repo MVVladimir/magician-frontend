@@ -22,6 +22,7 @@ import './centerPic.css'
 import './sthg.css'
 import './startText.css'
 import './marginIndicators.css'
+import './buttonText.css'
 import { createMethodSignature } from 'typescript';
 
 const YOUDIED = 99999;
@@ -338,13 +339,13 @@ export class Scene extends React.Component {
           return (
             < >
               <Col type="calc" offsetS={1} offsetM={2} offsetL={3} offsetXL={4} sizeS={1} sizeM={2} sizeL={3} sizeXL={4} />
-              <Headline1 className='textWrapper'> { this.neededText(scene) } </Headline1>
+              <h1 className='textWrapper'> { this.neededText(scene) } </h1>
               {
                 scene.options.map((item) => {
                   return (
                     <Row>
                       <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
-                        {item.text[0]}
+                      <div className='butTextWrapper'> {item.text[0]} </div>
                       </Button>
                     </Row>
                   );
@@ -365,13 +366,13 @@ export class Scene extends React.Component {
                    
                   </Col>
                   <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={8} sizeXL={6}>
-                    <Headline1 className='centerText'> { this.neededText(scene) } </Headline1>
+                    <h1 className='centerText'> { this.neededText(scene) } </h1>
                     {
                       scene.options.map((item) => {
                         return (
                           <Row>
                             <Button  style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
-                              {item.text[0]}
+                            <div className='butTextWrapper'> {item.text[0]} </div>
                             </Button>
                           </Row>
                         );
@@ -394,14 +395,14 @@ export class Scene extends React.Component {
                  
                 </Col>
                   <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
-                  <Headline1 className='centerText'> { this.neededText(scene) } </Headline1>
+                  <h1 className='centerText'> { this.neededText(scene) } </h1>
                   <Indicators lives={lives} mana={mana} glory={glory} />
                   {
                     scene.options.map((item) => {
                       return (
                         <Row type="rel" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
                           <Button style={{ marginBottom: '1rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
-                            {item.text[0]}
+                            <div className='butTextWrapper'> {item.text[0]} </div>
                           </Button>
                         </Row>
                       );
