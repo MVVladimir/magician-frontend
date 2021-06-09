@@ -1,0 +1,11 @@
+.But {
+    margin-bottom: 1rem;
+}
+
+.But :first-child{
+    margin-bottom: 1rem;
+}
+
+.But :last-child {
+    margin-bottom: 4rem;
+}
