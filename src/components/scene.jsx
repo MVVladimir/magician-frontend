@@ -397,7 +397,6 @@ export class Scene extends React.Component {
                 </Col>
                   <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
                   <h1 className='centerText'> { this.neededText(scene) } </h1>
-                  <div className=''>
                   <Indicators lives={lives} mana={mana} glory={glory} />
                   {
                     scene.options.map((item) => {
@@ -410,7 +409,6 @@ export class Scene extends React.Component {
                       );
                     })
                   }
-                  </div>
                   </Col>
           </Row>
             //{ console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
