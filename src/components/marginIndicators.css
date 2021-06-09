@@ -7,52 +7,52 @@
 
 @media screen and (min-width: 0px) and (max-width: 559px) {
     .indWrapper{
-        margin-right: 2%;
+        margin-right: 5%;
         margin-left: 0%;
         margin-top: 0%;
-        margin-bottom: 3%;
+        margin-bottom: 5%;
     }
 }
 
 @media screen and (min-width: 560px) and (max-width: 768px) {
     .indWrapper{
-        margin-right: 2%;
+        margin-right: 5%;
         margin-left: 0%;
-        margin-top: 2%;
-        margin-bottom: 0%;
+        margin-top: 5%;
+        margin-bottom: 5%;
     }
 }
 
 @media screen and (min-width: 769px) and (max-width: 959px){
     .indWrapper{
-        margin-right: 2%;
+        margin-right: 5%;
         margin-left: 0%;
-        margin-top: 0%;
+        margin-top: 5%;
         margin-bottom: 0%;
     }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1118px){
     .indWrapper{
-        margin-right: 2%;
+        margin-right: 5%;
         margin-left: 0%;
-        margin-top: 2%;
+        margin-top: 5%;
         margin-bottom: 0%;
     }
 }
 
 @media screen and (min-width: 1120px) and (max-width: 1536px){
     .indWrapper{
-        margin-right: 2%;
+        margin-right: 5%;
         margin-left: 0%;
-        margin-top: 0%;
-        margin-bottom: 0%;
+        margin-top: 5%;
+        margin-bottom: 5%;
     }
 }
 
 @media screen and (min-width: 1538px) and (max-width: 1918px){
     .indWrapper{
-        margin-right: 2%;
+        margin-right: 10%;
         margin-left: 0%;
         margin-top: 0%;
         margin-bottom: 0%;
@@ -61,7 +61,7 @@
 
 @media screen and (min-width: 1920px){
     .indWrapper{
-        margin-right: 2%;
+        margin-right: 10%;
         margin-left: 0%;
         margin-top: 0%;
         margin-bottom: 0%;

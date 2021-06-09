@@ -24,6 +24,7 @@ import './startText.css'
 import './marginIndicators.css'
 import './buttonText.css'
 import './lastBut.css'
+import './centerSpinner.css'
 import { createMethodSignature } from 'typescript';
 
 const YOUDIED = 99999;
@@ -80,6 +81,7 @@ export class Scene extends React.Component {
       switch (event.type) {
         case 'character':
           characterID = event.character.id;
+          this.setState({scene: this.state.scene, character: characterID});
           console.log("CHARACTER= ", characterID);
         // case 'action':
         //   console.log(`assistant.on(data)`, event);
@@ -108,7 +110,7 @@ export class Scene extends React.Component {
       curNodes = nodesArr.slice();
     }
 
-    this.setState({ scene: data });
+    this.setState({ scene: data , character : characterID});
     this.read();
   }
 
@@ -233,7 +235,7 @@ export class Scene extends React.Component {
       }
     });
     //setBackgroundImage({background : string});
-    this.setState({ backgroundImage: {background : string}})
+    this.setState({ backgroundImage: {background : string}, character: characterID})
     pictures.reverse();
   }
   
@@ -284,7 +286,7 @@ export class Scene extends React.Component {
           glory += data.bonus.glory;
         }
 
-        this.setState({ scene: data });
+        this.setState({ scene: data , character : characterID});
         this.read();
         counter++;
         console.log('COUNTER = ', counter);
@@ -395,7 +397,7 @@ export class Scene extends React.Component {
                   </div>
                  
                 </Col>
-                  <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
+                <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
                   <h1 className='centerText'> { this.neededText(scene) } </h1>
                   <Indicators lives={lives} mana={mana} glory={glory} />
                   {
@@ -410,13 +412,13 @@ export class Scene extends React.Component {
                     })
                   }
                   </Col>
-          </Row>
+              </Row>
             //{ console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
           // </Container>
         );
       }
     } else {
-      return (<Spinner />);
+      return (<Spinner className='spinnerWrapper'/>);
     }
   }
 }
