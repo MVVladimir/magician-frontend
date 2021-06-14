@@ -109,7 +109,7 @@ export class Scene extends React.Component {
     if (data.nodesArr) {
       nodesArr = data.nodesArr;
       console.log('nodesArr', nodesArr);
-      curNodes = nodesArr.slice();
+      curNodes = nodesArr.slice(0, nodesArr.length);
     }
 
     this.setState({ scene: data , character : characterID});
@@ -290,7 +290,7 @@ export class Scene extends React.Component {
 
     if ((nextId == 0 || nextId == 1) && this.state.scene.id > 1) {
       setBackground.backgroundImage = '';
-      curNodes = nodesArr;
+      curNodes = nodesArr.slice(0, nodesArr.length);
       counter = 0;
       lives = 3;
       mana = 50;
