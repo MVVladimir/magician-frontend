@@ -243,6 +243,7 @@ export class Scene extends React.Component {
   
   moveTo(nextId) {
     //fetchedData(nextId)
+    counter++;
 
     if ((lives <= 0 || mana <= 0 || glory <= 0) && this.state.scene.id != YOUDIED ) {
       nextId = YOUDIED;
@@ -309,7 +310,7 @@ export class Scene extends React.Component {
 
         this.setState({ scene: data , character : characterID});
         this.read();
-        counter++;
+        // counter++;
         console.log('COUNTER = ', counter);
 
         if (counter > 0 && data.img) {
@@ -379,7 +380,7 @@ export class Scene extends React.Component {
           );
         }
 
-        if (counter < 8) {
+        if (counter < 7) {
           return(
             // <Container styles={darkSber} >
                 <Row className='rowWrapper'>
