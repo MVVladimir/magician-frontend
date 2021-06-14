@@ -32,6 +32,8 @@ const YOUWIN = 100000;
 
 let characterID;
 
+let firstRepeat = false;
+
 let lives = 3;
 let mana = 50;
 let glory = 50;
@@ -257,14 +259,19 @@ export class Scene extends React.Component {
 
       if (curNodes.length == 0) {
         console.log('NODES ARR = ', nodesArr);
+        if (!firstRepeat) {
+          nextId = 12321;
+          firstRepeat = true;
+        }
         curNodes = nodesArr.slice();
       }
-
-      nextId = Math.floor(Math.random() * curNodes.length);
-      let tmp = nextId;
-      nextId = curNodes[nextId];
-      curNodes.splice(tmp, 1);
-      console.log(curNodes);
+      else {
+        nextId = Math.floor(Math.random() * curNodes.length);
+        let tmp = nextId;
+        nextId = curNodes[nextId];
+        curNodes.splice(tmp, 1);
+        console.log(curNodes);
+      }
     }
 
     if ((nextId == 0 || nextId == 1) && this.state.scene.id > 1) {
