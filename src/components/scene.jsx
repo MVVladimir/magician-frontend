@@ -107,7 +107,7 @@ export class Scene extends React.Component {
     const { data } = response;
 
     if (data.nodesArr) {
-      nodesArr = data.nodesArr;
+      nodesArr = data.nodesArr.slice(0, data.nodesArr.length);
       console.log('nodesArr', nodesArr);
       curNodes = nodesArr.slice(0, nodesArr.length);
     }
@@ -288,10 +288,10 @@ export class Scene extends React.Component {
       }
     }
 
-    if ((nextId == 0 || nextId == 1) && this.state.scene.id > 1) {
+    if ((nextId == 1) && this.state.scene.id > 1) {
       setBackground.backgroundImage = '';
       curNodes = nodesArr.slice(0, nodesArr.length);
-      counter = 0;
+      counter = 1;
       lives = 3;
       mana = 50;
       glory = 50; 
