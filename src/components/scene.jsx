@@ -379,7 +379,7 @@ export class Scene extends React.Component {
           );
         }
 
-        if (counter < 7) {
+        if (counter < 8) {
           return(
             // <Container styles={darkSber} >
                 <Row className='rowWrapper'>
