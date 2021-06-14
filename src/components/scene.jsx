@@ -272,6 +272,7 @@ export class Scene extends React.Component {
           curNodes = nodesArr.slice(0, nodesArr.length);
           console.log('REPEAT POINT CUR NODS' ,curNodes);
           
+          nextId = Math.floor(Math.random() * curNodes.length);
           let tmp = nextId;
           nextId = curNodes[nextId];
           curNodes.splice(tmp, 1);
