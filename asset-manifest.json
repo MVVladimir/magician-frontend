@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/magician-frontend/static/css/main.bbe47fb8.chunk.css",
-    "main.js": "/magician-frontend/static/js/main.9873713a.chunk.js",
-    "main.js.map": "/magician-frontend/static/js/main.9873713a.chunk.js.map",
+    "main.js": "/magician-frontend/static/js/main.38e5733c.chunk.js",
+    "main.js.map": "/magician-frontend/static/js/main.38e5733c.chunk.js.map",
     "runtime-main.js": "/magician-frontend/static/js/runtime-main.27af0a1a.js",
     "runtime-main.js.map": "/magician-frontend/static/js/runtime-main.27af0a1a.js.map",
     "static/css/2.ae15fd65.chunk.css": "/magician-frontend/static/css/2.ae15fd65.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.ae15fd65.chunk.css",
     "static/js/2.750236ce.chunk.js",
     "static/css/main.bbe47fb8.chunk.css",
-    "static/js/main.9873713a.chunk.js"
+    "static/js/main.38e5733c.chunk.js"
   ]
 }
