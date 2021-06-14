@@ -263,7 +263,9 @@ export class Scene extends React.Component {
           nextId = 12321;
           firstRepeat = true;
         }
-        curNodes = nodesArr.slice();
+        console.log('REPEAT POINT NODES ARR' ,nodesArr);
+        curNodes = nodesArr.slice(0, nodesArr.length);
+        console.log('REPEAT POINT CUR NODS' ,curNodes);
       }
       else {
         nextId = Math.floor(Math.random() * curNodes.length);
