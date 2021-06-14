@@ -276,7 +276,7 @@ export class Scene extends React.Component {
           let tmp = nextId;
           nextId = curNodes[nextId];
           curNodes.splice(tmp, 1);
-          console.log(curNodes);
+          console.log('NEXT ID = ', nextId);
         }
       }
       else {
