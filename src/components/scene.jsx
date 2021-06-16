@@ -256,7 +256,7 @@ export class Scene extends React.Component {
       nextId = YOUDIED;
     }
 
-    if ((lives > 0 && mana >= 200 && glory >= 200) && this.state.scene.id != YOUWIN ) {
+    if ((lives > 0 && (mana >= 200 || glory >= 200)) && this.state.scene.id != YOUWIN ) {
       nextId = YOUWIN;
     }
 
