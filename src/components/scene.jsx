@@ -119,7 +119,8 @@ export class Scene extends React.Component {
   getStateForAssistant () {
     console.log('getStateForAssistant: this.state:', this.state);
     
-    const rand =  Math.floor(Math.random() * this.state.scene.options.length);
+    // const rand =  Math.floor(Math.random() * this.state.scene.options.length);
+    const rand = this.state.scene.options.length == 1 ? 0 :  Math.floor(Math.random() * this.state.scene.options.length);
 
     const state = {
       item_selector: {
