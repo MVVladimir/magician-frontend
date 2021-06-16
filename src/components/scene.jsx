@@ -309,7 +309,7 @@ export class Scene extends React.Component {
         }
 
         this.setState({ scene: data , character : characterID});
-        this.read();
+        // this.read();
         // counter++;
         console.log('COUNTER = ', counter);
 
