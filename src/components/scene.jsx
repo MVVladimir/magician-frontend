@@ -118,9 +118,15 @@ export class Scene extends React.Component {
 
   getStateForAssistant () {
     console.log('getStateForAssistant: this.state:', this.state);
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
+    }
     
     // const rand =  Math.floor(Math.random() * this.state.scene.options.length);
-    const rand = this.state.scene.options.length == 1 ? 0 :  Math.floor(Math.random() * this.state.scene.options.length);
+    // const rand = this.state.scene.options.length == 1 ? 0 :  Math.floor(Math.random() * this.state.scene.options.length);
 
     const state = {
       item_selector: {
@@ -129,7 +135,8 @@ export class Scene extends React.Component {
           texts : this.state.scene.texts,
           texta : this.state.scene.texta,
           textj : this.state.scene.textj,
-          userSuggest: this.state.scene.options[rand].text[0]
+          // userSuggest: this.state.scene.options[rand].text[0]
+          userSuggest: this.state.scene.options[getRandomInt(0, this.state.scene.options.length)].text[0]
          }
       }
     };
