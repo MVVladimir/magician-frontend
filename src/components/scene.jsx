@@ -149,6 +149,9 @@ export class Scene extends React.Component {
         case 'read':
           return this.read();
 
+        case 'newScene':
+          return this.newScene();
+
         /*
         case 'delete_note':
           return this.delete_note(action);
@@ -161,6 +164,10 @@ export class Scene extends React.Component {
 
   read () {
     this.assistant.sendData( { action : { action_id : 'read' } } );
+  }
+
+  newScene () {
+    this.assistant.sendData( { action : { action_id : 'newScene' } } );
   }
 
   sendException() {
@@ -309,6 +316,7 @@ export class Scene extends React.Component {
         }
 
         this.setState({ scene: data , character : characterID});
+        this.newScene();
         // this.read();
         // counter++;
         console.log('COUNTER = ', counter);
