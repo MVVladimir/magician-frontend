@@ -385,7 +385,7 @@ export class Scene extends React.Component {
                 scene.options.map((item) => {
                   return (
                     <Row>
-                      <Button style={{ marginBottom: '3rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
+                      <Button style={{ marginBottom: '5rem', width: '100%' }} stretch={true} size="l" onClick={ () => this.add_note({choice: item.text[0]}) }>
                       <div className='butTextWrapper'> {item.text[0]} </div>
                       </Button>
                     </Row>
