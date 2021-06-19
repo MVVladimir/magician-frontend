@@ -371,8 +371,6 @@ export class Scene extends React.Component {
 
      const { scene, backgroundImage } = this.state;
 
-    /*изначально было setBackgroundImage({background : `url(${API_URL}/${curImg}.png) center no-repeat`});*/
-
     if (scene) {
       if (scene.options) {
 
@@ -398,11 +396,9 @@ export class Scene extends React.Component {
 
         if (counter < 7) {
           return(
-            // <Container styles={darkSber} >
                 <Row className='rowWrapper'>
                   <Col sizeS={4} sizeM={3} sizeL={4} sizeXL={6} className='centerPic'>
                     <div style={backgroundImage} className = 'img-Wrapper'>
-                       {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                     </div>
                    
                   </Col>
@@ -421,18 +417,14 @@ export class Scene extends React.Component {
                     }
                   </Col>
             </Row>
-              //{ console.log('values: ', lives, ' ', light, ' ', darkness, ' ', glory) }
-            // </Container>
           );
         }
 
         return(
-          // <Container styles={darkSber} >
           <>
               <Row className='rowWrapper'>
                 <Col sizeS={4} sizeM={3} sizeL={4} sizeXL={6} className='centerPic'>
                   <div style={backgroundImage} className = 'img-Wrapper'>
-                     {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                   </div>
                 </Col>
                 <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={3} sizeL={3} sizeXL={6}>
