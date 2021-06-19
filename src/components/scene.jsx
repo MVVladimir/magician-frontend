@@ -434,7 +434,7 @@ export class Scene extends React.Component {
                     scene.options.map((item) => {
                       return (
                         <Row type="rel" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
-                          <Button style={{ marginBottom: '10px', width: '100%' }} stretch={true} size="s" onClick={ () => this.add_note({choice: item.text[0]}) }>
+                          <Button scaleOnHover = {false} style={{ marginBottom: '10px', width: '100%' }} stretch={true} size="s" onClick={ () => this.add_note({choice: item.text[0]}) }>
                             <div className='butTextWrapper'> {item.text[0]} </div>
                           </Button>
                         </Row>
