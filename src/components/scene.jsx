@@ -400,13 +400,13 @@ export class Scene extends React.Component {
           return(
             // <Container styles={darkSber} >
                 <Row className='rowWrapper'>
-                  <Col sizeS={4} sizeM={3} sizeL={8} sizeXL={6} className='centerPic'>
+                  <Col sizeS={4} sizeM={3} sizeL={4} sizeXL={6} className='centerPic'>
                     <div style={backgroundImage} className = 'img-Wrapper'>
                        {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                     </div>
                    
                   </Col>
-                  <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={3} sizeL={8} sizeXL={6}>
+                  <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={3} sizeL={3} sizeXL={6}>
                     <h1 className='centerText'> { this.neededText(scene) } </h1>
                     {
                       scene.options.map((item) => {
@@ -429,13 +429,13 @@ export class Scene extends React.Component {
         return(
           // <Container styles={darkSber} >
               <Row className='rowWrapper'>
-                <Col sizeS={4} sizeM={6} sizeL={8} sizeXL={6} className='centerPic'>
+                <Col sizeS={4} sizeM={3} sizeL={4} sizeXL={6} className='centerPic'>
                   <div style={backgroundImage} className = 'img-Wrapper'>
                      {/* <img  src={API_URL + '/' + scene.img + '.png' } height={'450'} width={'450'} /> */}
                   </div>
                  
                 </Col>
-                <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
+                <Col className = 'centerBut' type="rel" offsetS={0} offsetM={0} offsetL={1} offsetXL={0} sizeS={4} sizeM={3} sizeL={3} sizeXL={6}>
                   <h1 className='centerText'> { this.neededText(scene) } </h1>
                   <Indicators lives={lives} mana={mana} glory={glory} />
                   {
