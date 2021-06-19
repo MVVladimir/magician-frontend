@@ -20,28 +20,28 @@
 
 @media screen and (min-width: 769px) and (max-width: 959px){
     .centerText{
-        font-size: 100%;
+        font-size: 1rem;
         /* font-size: 150%; */
     }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1118px){
     .centerText{
-        font-size: 100%;
-        /* font-size: 150%; */
+        font-size: 1rem;
+        /* font-sizez 150%; */
     }
 }
 
 @media screen and (min-width: 1120px) and (max-width: 1536px){
     .centerText{
-        font-size: 100%;
+        font-size: 1rem;
         /* font-size: 170%; */
     }
 }
 
 @media screen and (min-width: 1538px) and (max-width: 1918px){
     .centerText{
-        font-size: 100%;
+        font-size: 1rem;
         /* font-size: 170%; */
     }
 }
