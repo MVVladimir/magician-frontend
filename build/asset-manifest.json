@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/magician-frontend/static/css/main.def89a8d.chunk.css",
+    "main.css": "/magician-frontend/static/css/main.2274d520.chunk.css",
     "main.js": "/magician-frontend/static/js/main.6cf5fd41.chunk.js",
     "main.js.map": "/magician-frontend/static/js/main.6cf5fd41.chunk.js.map",
     "runtime-main.js": "/magician-frontend/static/js/runtime-main.27af0a1a.js",
@@ -12,7 +12,7 @@
     "static/js/3.69369908.chunk.js.map": "/magician-frontend/static/js/3.69369908.chunk.js.map",
     "index.html": "/magician-frontend/index.html",
     "static/css/2.ae15fd65.chunk.css.map": "/magician-frontend/static/css/2.ae15fd65.chunk.css.map",
-    "static/css/main.def89a8d.chunk.css.map": "/magician-frontend/static/css/main.def89a8d.chunk.css.map",
+    "static/css/main.2274d520.chunk.css.map": "/magician-frontend/static/css/main.2274d520.chunk.css.map",
     "static/js/2.1c99da57.chunk.js.LICENSE.txt": "/magician-frontend/static/js/2.1c99da57.chunk.js.LICENSE.txt",
     "static/media/sphere.ea0e1542.png": "/magician-frontend/static/media/sphere.ea0e1542.png"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.27af0a1a.js",
     "static/css/2.ae15fd65.chunk.css",
     "static/js/2.1c99da57.chunk.js",
-    "static/css/main.def89a8d.chunk.css",
+    "static/css/main.2274d520.chunk.css",
     "static/js/main.6cf5fd41.chunk.js"
   ]
 }
