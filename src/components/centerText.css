@@ -13,7 +13,8 @@
 
 @media screen and (min-width: 560px) and (max-width: 768px) {
     .centerText{
-        font-size: 150%;
+        font-size: 130%;
+        /* font-size: 150%; */
     }
 }
 
