@@ -170,6 +170,15 @@ export class Scene extends React.Component {
     }
   }
 
+  exit () {
+    this.assistant.sendData( {action : {
+      "command": {
+        "type": "close_app"
+      }
+    }}
+    )
+  }
+
   read () {
     this.assistant.sendData( { action : { action_id : 'read' } } );
   }
@@ -189,6 +198,12 @@ export class Scene extends React.Component {
     choice = choice.toLowerCase();
     
     console.log(choice);
+
+    if (this.state.scene.options[1]) {
+      if (this.state.scene.options[1].text.find((element) => {if (element == 'выйти') return true;}) && this.state.scene.options[1].text.find((element) => {if (element == choice.toLowerCase()) return true;})) {
+        this.exit();
+      }
+    }
 
     if (choice == 'один' || choice == 'первый' || choice == 'первое' || choice == 'первую') {
       choice = 1;
