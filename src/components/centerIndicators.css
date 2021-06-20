@@ -44,6 +44,24 @@
     }
 }
 
+@media screen and (width: 1080px) and (height: 1920px){
+    .centerInd{
+        display: flex;
+        justify-content: center;
+        margin-left: 0%;
+        margin-top: 5%;
+    }
+}
+
+@media screen and (width: 1080px) and (height: 1920px){
+    .centerInd {
+        position: unset;
+        display: flex;
+        justify-content: center;
+        margin-left: 0%;
+    }
+}
+
 @media screen and (min-width: 1120px) and (max-width: 1536px){
     .centerInd {
         display: flex;

@@ -30,6 +30,13 @@
     }
 }
 
+@media screen and (width: 1080px) and (height: 1920px){
+    .centerBut {
+        margin-left: 1%;
+        margin-top: 0%;
+    }
+}
+
 @media screen and (min-width: 1120px) and (max-width: 1536px){
     .centerBut {
         margin-top: 0%;

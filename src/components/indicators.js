@@ -15,9 +15,9 @@ class Indicators extends React.Component {
     render() {
         return (
             <Row className = 'centerInd'>
-                <div className='indWrapper'> <Toast text={`Количество жизней: ${this.props.lives}💖`} /> </div>
-                <div className='indWrapper'> <Toast text={`Мана: ${this.props.mana}🧙`} /> </div>
-                <div className='indWrapper'> <Toast text={`Слава: ${this.props.glory}🎺`} /> </div>
+                <div className='indWrapper'> <Toast  text={`Количество жизней: ${this.props.lives}💖`} /> </div>
+                <div className='indWrapper'> <Toast  text={`Мана: ${this.props.mana}🧙`} /> </div>
+                <div className='indWrapper'> <Toast  text={`Слава: ${this.props.glory}🎺`} /> </div>
             </Row>
         );
     }

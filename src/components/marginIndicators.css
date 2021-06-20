@@ -14,6 +14,18 @@
     }
 }
 
+@media screen and (width: 1080px) and (height: 1920px){
+    .indWrapper > div{
+        font-size: 120%;
+        margin-right: 0%;
+        margin-left: 0%;
+        margin-bottom: 0%;
+    }
+    .indWrapper {
+        margin-top: 5%;
+    }
+}
+
 /* @media screen and (min-width: 560px) and (max-width: 768px) {
     .indWrapper{
         margin-right: 5%;

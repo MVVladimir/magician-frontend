@@ -29,6 +29,13 @@
     }
 }
 
+@media screen and (width: 1080px) and (height: 1920px){
+    .butTextWrapper{
+        font-size: 150%;
+        /* font-sizez 150%; */
+    }
+}
+
 @media screen and (min-width: 1120px) and (max-width: 1536px){
     .butTextWrapper{
         font-size: 100%;

@@ -33,6 +33,13 @@
     }
 }
 
+@media screen and (width: 1080px) and (height: 1920px){
+    .img-Wrapper {
+        width: 600px;
+        height: 600px;
+    }
+}
+
 @media screen and (min-width: 1120px) and (max-width: 1536px){
     .img-Wrapper{
         width: 400px;
