@@ -202,8 +202,12 @@ export class Scene extends React.Component {
 
     if (this.state.scene.options[1]) {
       if (this.state.scene.options[1].text.includes('выйти') && this.state.scene.options[1].text.includes(choice.toLowerCase())) {
+        console.log("EXIT")
         this.exit();
       }
+      // console.log("FINDING A WAY OUT ", this.state.scene.options[1].text.includes('выйти'));
+      // console.log("THE CHOICE ", choice);
+      // console.log("PROBABLY ANOTHER WAY ", this.state.scene.options[1].text.includes(choice.toLowerCase()));
     }
 
     if (choice == 'один' || choice == 'первый' || choice == 'первое' || choice == 'первую') {
@@ -229,6 +233,7 @@ export class Scene extends React.Component {
       console.log('ARR = ' + arr.text);
 
       arr.text.forEach((item) => {
+        console.log("item = ", item)
         if (item.toLowerCase() === choice) {
           this.moveTo(arr.id);
           isChanged = true;
