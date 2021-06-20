@@ -171,12 +171,7 @@ export class Scene extends React.Component {
   }
 
   exit () {
-    this.assistant.sendData( {action : {
-      "command": {
-        "type": "close_app"
-      }
-    }}
-    )
+    this.assistant.close();
   }
 
   read () {
