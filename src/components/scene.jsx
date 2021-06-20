@@ -194,8 +194,14 @@ export class Scene extends React.Component {
     
     console.log(choice);
 
+    // if (this.state.scene.options[1]) {
+    //   if (this.state.scene.options[1].text.find((element) => {if (element == 'выйти') return true;}) && this.state.scene.options[1].text.find((element) => {if (element == choice.toLowerCase()) return true;})) {
+    //     this.exit();
+    //   }
+    // }
+
     if (this.state.scene.options[1]) {
-      if (this.state.scene.options[1].text.find((element) => {if (element == 'выйти') return true;}) && this.state.scene.options[1].text.find((element) => {if (element == choice.toLowerCase()) return true;})) {
+      if (this.state.scene.options[1].text.includes('выйти') && this.state.scene.options[1].text.includes(choice.toLowerCase())) {
         this.exit();
       }
     }
