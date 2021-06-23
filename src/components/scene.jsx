@@ -389,9 +389,9 @@ export class Scene extends React.Component {
        })
     }, []);
     */
-
-     const { scene, backgroundImage } = this.state;
-
+    
+    const { scene, backgroundImage } = this.state;
+    console.log("SCENE ", scene);
     if (scene) {
       if (scene.options) {
 
@@ -429,7 +429,7 @@ export class Scene extends React.Component {
                       scene.options.map((item) => {
                         return (
                           <Row>
-                            <Button scaleOnInteraction = {false} scaleOnHover = {false} scaleOnPress = {false} style={{ marginBottom: '12px', width: '100%' }} stretch={true} size="s" onClick={ () => this.add_note({choice: item.text[0]}) }>
+                            <Button key={item.id} scaleOnInteraction = {false} scaleOnHover = {false} scaleOnPress = {false} style={{ marginBottom: '12px', width: '100%' }} stretch={true} size="s" onClick={ () => this.add_note({choice: item.text[0]}) }>
                             <div className='butTextWrapper'> {item.text[0]} </div>
                             </Button>
                           </Row>
@@ -455,7 +455,7 @@ export class Scene extends React.Component {
                     scene.options.map((item) => {
                       return (
                         <Row type="rel" sizeS={4} sizeM={6} sizeL={6} sizeXL={6}>
-                          <Button scaleOnInteraction = {false} scaleOnHover = {false} scaleOnPress = {false} style={{ marginBottom: '12px', width: '100%' }} stretch={true} size="s" onClick={ () => this.add_note({choice: item.text[0]}) }>
+                          <Button key={item.id} scaleOnInteraction = {false} scaleOnHover = {false} scaleOnPress = {false} style={{ marginBottom: '12px', width: '100%' }} stretch={true} size="s" onClick={ () => this.add_note({choice: item.text[0]}) }>
                             <div className='butTextWrapper'> {item.text[0]} </div>
                           </Button>
                         </Row>
